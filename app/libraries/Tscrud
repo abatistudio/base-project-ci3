@@ -67,13 +67,11 @@ class Tscrud
 		$where = $param['where'];
 		$field = $param['field'];
 
-		// $sql = "SELECT * FROM $table WHERE $fieldkey $operator '$fieldval'";
 		$this->CI->db->select($field);
 		$this->CI->db->where($where);
 		$result = $this->CI->db->get($table);
 
 		$aData  = array('success'=> false, 'message'=> 'Error...', 'rows'=>array());
-		// $result = $this->CI->db->query($sql);
 		if($result)
 		{
 			$aData['message'] = 'Data tidak ada';
