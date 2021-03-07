@@ -67,4 +67,12 @@ Cara menggunakan:
     CREATE TABLE `users_session` (`id` varchar(128) NOT NULL,`ip_address` varchar(45) NOT NULL,`timestamp` int(10) unsigned NOT NULL DEFAULT 0,`data` blob NOT NULL,KEY `ci_sessions_timestamp` (`timestamp`)) ENGINE=MyISAM DEFAULT CHARSET=latin1
 
     
-untuk menjalankan projectnya, entri address browser dengan url http:/localhost/projectmu/index.php/welcome
+untuk menjalankan projectnya, entri address browser dengan url dibawah ini:
+menampilkan variable configurasi:
+  http:/localhost/projectmu/index.php/welcome
+
+untuk test login:
+  http:/localhost/projectmu/index.php/welcome/userin
+
+untuk test logout:
+  http:/localhost/projectmu/index.php/welcome/userout
