@@ -68,6 +68,7 @@ Cara menggunakan:
 
     
 untuk menjalankan projectnya, entri address browser dengan url dibawah ini:
+
 menampilkan variable configurasi:
   http:/localhost/projectmu/index.php/welcome
 
