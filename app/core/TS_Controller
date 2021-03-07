@@ -2,14 +2,13 @@
 
 class TS_Controller extends CI_Controller
 {  
-  var $baseurl = "http://".$_SERVER['HTTP_HOST']."/rqzaidbts/";
   var $library = array('session', 'tscrud');
   var $helper = array('url', 'tshelp');
-  var $database = array(
+  var $dbconfig = array(
       'hostname' => 'localhost',
-      'username' => 'userqr',
+      'username' => 'root',
       'password' => '123',
-      'database' => 'rumahqurandb',
+      'database' => 'yourdb',
       'dbdriver' => 'mysqli',
       'dbprefix' => '',
       'pconnect' => FALSE,
@@ -32,42 +31,41 @@ class TS_Controller extends CI_Controller
     parent::__construct();
     date_default_timezone_set('Asia/Jakarta');
 
-    $this->load->database($this->database);
+    $this->load->database($this->dbconfig);
     $this->load->library($this->library);
     $this->load->helper($this->helper);
 
-    $this->config->set_item('base_url', $baseurl);
     $this->tsdata['versi'] = '0.1';
     $this->tsdata['app'  ] = 'nameOfApp';
     $this->tsdata['copyright' ] = 'CopyRight '.date('Y').' &copy; nameOfTeam, IT Support. Semua Hak Dilindungi Undang-undang';
     $this->tsdata['tglsistem' ] = date('Y-m-d H:i:s', time());
     $this->tsdata['urlberkas' ] = 'berkas/';
     $this->tsdata['pathberkas'] = getcwd()."/".$this->tsdata['urlberkas'];
-
+    $this->tsdata['urlbase'   ] = "http://".$_SERVER['HTTP_HOST']."/projectFolder/";
+    
+    $this->config->set_item('base_url', $this->tsdata['urlbase']);
     if($this->session->userdata('user'))
     {
       $this->tsdata['user'] = $this->session->userdata('user');
     }
   }
 
-  function tslogin($username='', $password='')
+  function login($username='', $password='')
   {
     $login = html_escape($username, ENT_QUOTES);
     $passw = html_escape($password, ENT_QUOTES);
-
-    $sql = "SELECT users.*, satker.nmsatker FROM users 
-    WHERE login = '$login' AND passw = password('$passw')";
-
-    $aData = $this->tscrud->Select($sql);
-    if($aData['success'])
-      $this->session->set_userdata('user',$aData['rows'][0]);
-
-    return $aData;
+    $param = array(
+      'table'=>'users',
+      'field'=>'*',
+      'where'=>array('login' => $login, 'password' => mysqlPassword($passw)),
+    );
+    $query = $this->tscrud->get($param);
+ 
+    return $query;
   }
 
-  function tslogout()
+  function logout()
   {
-    $this->session->set_userdata('user',"");
     $this->session->sess_destroy();
   }  
 }
