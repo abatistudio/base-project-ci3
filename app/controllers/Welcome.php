@@ -12,7 +12,9 @@ class Welcome extends TS_Controller {
 	public function userin()
 	{
 		// test fungsi login()
-		$result = $this->login('tamrin', '123');
+		$username = 'admin';
+		$password = '123';
+		$result = $this->login($username, $password);
 		if($result['success']){
 			$user = $result['rows'][0];
 			$this->session->set_userdata('user',$user);
