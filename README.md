@@ -60,9 +60,8 @@ Cara menggunakan:
     isi datanya:
     insert  into `users`(`userid`,`login`,`password`,`username`,`useremail`) values (1,'admin','*23AE809DDACAF96AF0FD78ED04B6A265E05AA257','Administrator','admin@gmail.com');
     
-    Create Table users_session
+        Create Table users_session
     ============================
-
 CREATE TABLE `users_session` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
@@ -70,6 +69,8 @@ CREATE TABLE `users_session` (
   `data` blob NOT NULL,
   KEY `ci_sessions_timestamp` (`timestamp`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+    
 
     
 
