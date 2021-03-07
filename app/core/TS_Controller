@@ -1,0 +1,73 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class TS_Controller extends CI_Controller
+{  
+  var $baseurl = "http://".$_SERVER['HTTP_HOST']."/rqzaidbts/";
+  var $library = array('session', 'tscrud');
+  var $helper = array('url', 'tshelp');
+  var $database = array(
+      'hostname' => 'localhost',
+      'username' => 'userqr',
+      'password' => '123',
+      'database' => 'rumahqurandb',
+      'dbdriver' => 'mysqli',
+      'dbprefix' => '',
+      'pconnect' => FALSE,
+      'db_debug' => (ENVIRONMENT !== 'production'),
+      'cache_on' => FALSE,
+      'cachedir' => '',
+      'char_set' => 'utf8',
+      'dbcollat' => 'utf8_general_ci',
+      'swap_pre' => '',
+      'encrypt'  => FALSE,
+      'compress' => FALSE,
+      'stricton' => FALSE,
+      'failover' => array(),
+      'save_queries' => TRUE
+    );
+  var $tsdata = array();
+
+  public function __construct()
+  {
+    parent::__construct();
+    date_default_timezone_set('Asia/Jakarta');
+
+    $this->load->database($this->database);
+    $this->load->library($this->library);
+    $this->load->helper($this->helper);
+
+    $this->config->set_item('base_url', $baseurl);
+    $this->tsdata['versi'] = '0.1';
+    $this->tsdata['app'  ] = 'nameOfApp';
+    $this->tsdata['copyright' ] = 'CopyRight '.date('Y').' &copy; nameOfTeam, IT Support. Semua Hak Dilindungi Undang-undang';
+    $this->tsdata['tglsistem' ] = date('Y-m-d H:i:s', time());
+    $this->tsdata['urlberkas' ] = 'berkas/';
+    $this->tsdata['pathberkas'] = getcwd()."/".$this->tsdata['urlberkas'];
+
+    if($this->session->userdata('user'))
+    {
+      $this->tsdata['user'] = $this->session->userdata('user');
+    }
+  }
+
+  function tslogin($username='', $password='')
+  {
+    $login = html_escape($username, ENT_QUOTES);
+    $passw = html_escape($password, ENT_QUOTES);
+
+    $sql = "SELECT users.*, satker.nmsatker FROM users 
+    WHERE login = '$login' AND passw = password('$passw')";
+
+    $aData = $this->tscrud->Select($sql);
+    if($aData['success'])
+      $this->session->set_userdata('user',$aData['rows'][0]);
+
+    return $aData;
+  }
+
+  function tslogout()
+  {
+    $this->session->set_userdata('user',"");
+    $this->session->sess_destroy();
+  }  
+}
