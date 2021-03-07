@@ -1,2 +1,2 @@
-# base-class-ci3
-revo ini dibuat untuk dijadikan base ci bagi tim backend 
+# base-project-ci3
+revo ini dibuat untuk dijadikan base project ci3 bagi tim di abatistudio 
