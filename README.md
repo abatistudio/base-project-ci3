@@ -70,10 +70,13 @@ Cara menggunakan:
 untuk menjalankan projectnya, entri address browser dengan url dibawah ini:
 
 menampilkan variable configurasi:
+
   http:/localhost/projectmu/index.php/welcome
 
 untuk test login:
+
   http:/localhost/projectmu/index.php/welcome/userin
 
 untuk test logout:
+
   http:/localhost/projectmu/index.php/welcome/userout
