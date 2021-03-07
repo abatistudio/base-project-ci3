@@ -6,9 +6,9 @@ class TS_Controller extends CI_Controller
   var $helper = array('url', 'tshelp');
   var $dbconfig = array(
       'hostname' => 'localhost',
-      'username' => 'root',
+      'username' => 'simak',
       'password' => '123',
-      'database' => 'yourdb',
+      'database' => 'belajardb',
       'dbdriver' => 'mysqli',
       'dbprefix' => '',
       'pconnect' => FALSE,
@@ -41,7 +41,7 @@ class TS_Controller extends CI_Controller
     $this->tsdata['tglsistem' ] = date('Y-m-d H:i:s', time());
     $this->tsdata['urlberkas' ] = 'berkas/';
     $this->tsdata['pathberkas'] = getcwd()."/".$this->tsdata['urlberkas'];
-    $this->tsdata['urlbase'   ] = "http://".$_SERVER['HTTP_HOST']."/projectFolder/";
+    $this->tsdata['urlbase'   ] = "http://".$_SERVER['HTTP_HOST'].preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])).'/';
     
     $this->config->set_item('base_url', $this->tsdata['urlbase']);
     if($this->session->userdata('user'))
