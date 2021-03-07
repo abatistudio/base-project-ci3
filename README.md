@@ -11,7 +11,9 @@ Cara menggunakan:
   Kemudian buka file app/core/TS_Controller.php dengan editor yg kamu gunakan, 
   lalu ubah variable $dbconfig (username, password, dan database), sesuai dengan lingkungan localhost mu. 
   
-  var $dbconfig = array(
+    
+    
+    var $dbconfig = array(
       'hostname' => 'localhost',
       'username' => 'simak',
       'password' => '123',
@@ -33,6 +35,7 @@ Cara menggunakan:
     );
     
     Jangan lupa ubah juga beberapa variable dibawah ini, jika diperlukan:
+  
     $this->tsdata['versi'] = '0.1';
     $this->tsdata['app'  ] = 'nameOfApp';
     $this->tsdata['copyright' ] = 'CopyRight '.date('Y').' &copy; nameOfTeam, IT Support. Semua Hak Dilindungi Undang-undang';
