@@ -38,34 +38,12 @@ class TS_Controller extends CI_Controller
     $this->tsdata['versi'] = '0.1';
     $this->tsdata['app'  ] = 'nameOfApp';
     $this->tsdata['copyright' ] = 'CopyRight '.date('Y').' &copy; nameOfTeam, IT Support. Semua Hak Dilindungi Undang-undang';
-    $this->tsdata['urlberkas' ] = 'berkas/';
     $this->tsdata['tglsistem' ] = date('Y-m-d H:i:s', time());
+    $this->tsdata['urlberkas' ] = 'berkas/';
     $this->tsdata['pathberkas'] = getcwd()."/".$this->tsdata['urlberkas'];
     $this->tsdata['urlbase'   ] = "http://".$_SERVER['HTTP_HOST'].preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])).'/';
     
     $this->config->set_item('base_url', $this->tsdata['urlbase']);
-    if($this->session->userdata('user'))
-    {
-      $this->tsdata['user'] = $this->session->userdata('user');
-    }
+    $this->config->set_item('index_page', '');
   }
-
-  function login($username='', $password='')
-  {
-    $login = html_escape($username, ENT_QUOTES);
-    $passw = html_escape($password, ENT_QUOTES);
-    $param = array(
-      'table'=>'users',
-      'field'=>'*',
-      'where'=>array('login' => $login, 'password' => mysqlPassword($passw)),
-    );
-    $query = $this->tscrud->get($param);
- 
-    return $query;
-  }
-
-  function logout()
-  {
-    $this->session->sess_destroy();
-  }  
 }
