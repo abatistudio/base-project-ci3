@@ -1,12 +1,14 @@
-# base-project-ci3
-revo ini dibuat untuk dijadikan base project ci3 bagi tim di abatistudio 
+# blog-w3css-with-ci3
+revo ini dibuat untuk dijadikan base project bagi tim abatistudio 
 
 Cara menggunakan:
   Copykan semua file .php dibawah ini, ke folder lokal project ci3 kamu.
   - app/config/config.php
-  - app/controllers/Welcome.php
+  - app/controllers/*.php
   - app/core/TS_Controller.php
   - app/libraries/Tscrud.php
+  - app/helpers/tshelp_helper.php
+  - app/views/*
 
   Kemudian buka file app/core/TS_Controller.php dengan editor yg kamu gunakan, 
   lalu ubah variable $dbconfig (username, password, dan database), sesuai dengan lingkungan localhost mu. 
@@ -69,14 +71,5 @@ Cara menggunakan:
     
 untuk menjalankan projectnya, entri address browser dengan url dibawah ini:
 
-menampilkan variable configurasi:
+  http:/localhost/projectmu/
 
-  http:/localhost/projectmu/index.php/welcome
-
-untuk test login:
-
-  http:/localhost/projectmu/index.php/welcome/userin
-
-untuk test logout:
-
-  http:/localhost/projectmu/index.php/welcome/userout
