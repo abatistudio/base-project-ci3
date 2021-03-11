@@ -2,7 +2,7 @@
 revo ini dibuat untuk dijadikan base project bagi tim abatistudio 
 
 Cara menggunakan:
-  Copykan semua file .php dibawah ini, ke folder lokal project ci3 kamu.
+  Copykan file-file dibawah ini, ke folder lokal project ci3 kamu.
   - app/config/config.php
   - app/controllers/*.php
   - app/core/TS_Controller.php
@@ -11,7 +11,7 @@ Cara menggunakan:
   - app/views/*
 
   Kemudian buka file app/core/TS_Controller.php dengan editor yg kamu gunakan, 
-  lalu ubah variable $dbconfig (username, password, dan database), sesuai dengan lingkungan localhost mu. 
+  lalu ubah variable $dbconfig (username, password, dan database), sesuai dengan user mysql localhost mu. 
   
     
     
@@ -41,7 +41,7 @@ Cara menggunakan:
     $this->tsdata['versi'] = '0.1';
     $this->tsdata['app'  ] = 'nameOfApp';
     $this->tsdata['copyright' ] = 'CopyRight '.date('Y').' &copy; nameOfTeam, IT Support. Semua Hak Dilindungi Undang-undang';
-    $this->tsdata['urlberkas' ] = 'berkas/'; // folder ini harus dibuat di project ci3
+    $this->tsdata['urlberkas' ] = 'berkas/';
     
     
     Berikutnya buatlah table users di database yang kamu gunakan:
