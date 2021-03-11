@@ -1,0 +1,34 @@
+body, h1, h2, h3, h4, h5, h6  
+{
+	font-family: Georgia, serif;
+}
+body
+{
+   font-size: 1.1em !important;
+   color:#616161!important;
+   /*color: #000 !important;*/
+   /*font-family: Georgia !important;*/
+}
+a.w3-link:link {
+  text-decoration: none;
+}
+
+a.w3-link:visited {
+  text-decoration: none;
+}
+
+a.w3-link:hover {
+  color:#000!important;
+}
+
+a.w3-link:active {
+  text-decoration: underline;
+}
+
+.w3-image-textwrap {
+	float: left;
+	padding: 4px;
+	height: 90px; 
+	width: 130px; 
+	margin-right: 10px;
+}
