@@ -17,9 +17,24 @@ class Welcome extends TS_Controller {
 
 	public function index()
 	{
-		// echo 'halo';
+	    $param = array(
+	      'table'=>'posts',
+	      'field'=>'*',
+	      'where'=>'',
+	      'order'=>'idposts DESC',
+	      'limit'=>0,
+	      'offset'=>0
+	    );
+	    $result = $this->tscrud->get($param);
+
+	    $this->tsdata['posts'] = array();
+			if($result['success']){
+				$this->tsdata['posts'] = $result['rows'];
+			}
+
 		$view = $this->tsdata['folder'].'welcome'; 
 		$this->load->view($view, $this->tsdata);
+			// echo $this->db->last_query();
 	}
 
 	public function userin()
@@ -30,8 +45,11 @@ class Welcome extends TS_Controller {
 	    $passw = html_escape($this->input->post('password'), ENT_QUOTES);
 	    $param = array(
 	      'table'=>'users',
-	      'field'=>'*',
-	      'where'=>array('login' => $login, 'password' => mysqlPassword($passw)),
+	      'field'=>'userid, username, useremail',
+	      'where'=>"login = '$login' AND password = '".mysqlPassword($passw)."'",
+	      'order'=>'',
+	      'limit'=>0,
+	      'offset'=>0
 	    );
 	    $result = $this->tscrud->get($param);
 
@@ -50,4 +68,4 @@ class Welcome extends TS_Controller {
 }
 
 /* End of file Welcome.php */
-/* Location: ./app/controllers/Welcome.php */
+/* Location: .//home/tamrin/www/baserevoci3/app/controllers/Welcome.php */
