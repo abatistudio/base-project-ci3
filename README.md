@@ -44,30 +44,11 @@ Cara menggunakan:
     $this->tsdata['urlberkas' ] = 'berkas/';
     
     
-    Berikutnya buatlah table users di database yang kamu gunakan:
+   
     
-    Create table users
-    ==================
 
-    CREATE TABLE `users` (
-      `userid` int(10) NOT NULL AUTO_INCREMENT,
-      `login` varchar(15) NOT NULL DEFAULT '',
-      `password` varchar(255) NOT NULL DEFAULT '',
-      `username` varchar(50) NOT NULL DEFAULT '',
-      `useremail` varchar(50) DEFAULT NULL,
-      PRIMARY KEY (`userid`),
-      UNIQUE KEY `SECONDARY` (`login`,`password`)
-    ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1
-
-    isi datanya:
-    insert  into `users`(`userid`,`login`,`password`,`username`,`useremail`) values (1,'admin','*23AE809DDACAF96AF0FD78ED04B6A265E05AA257','Administrator','admin@gmail.com');
+Berikutnya buatlah database di mysql dan lakukan restore database blogdb.sql
     
-    
-    Create table users_session
-    ==========================
-    
-    CREATE TABLE `users_session` (`id` varchar(128) NOT NULL,`ip_address` varchar(45) NOT NULL,`timestamp` int(10) unsigned NOT NULL DEFAULT 0,`data` blob NOT NULL,KEY `ci_sessions_timestamp` (`timestamp`)) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
     
 untuk menjalankan projectnya, entri address browser dengan url dibawah ini:
 
