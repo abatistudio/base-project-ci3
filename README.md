@@ -1,5 +1,5 @@
 # blog-w3css-with-ci3
-revo ini dibuat untuk dijadikan base project bagi tim abatistudio 
+aplikasi blog sederhana yang dibuat dengan CI3 dan framework css w3.css dari https://www.w3schools.com/, 
 
 Cara menggunakan:
   Copykan file-file dibawah ini, ke folder lokal project ci3 kamu.
