@@ -4,10 +4,9 @@
 		<div class="w3-dropdown-hover">
     	<button class="w3-button">BLOG</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-card-4">
-	      <a href="#" class="w3-bar-item w3-button">PHP</a>
-	      <a href="#" class="w3-bar-item w3-button">CodeIgniter</a>
-	      <a href="#" class="w3-bar-item w3-button">JQuery</a>
-	      <a href="#" class="w3-bar-item w3-button">JEasyUI</a>
+	    	<?php foreach ($category as $row): ?>
+	      	<a href="<?=$kelas.'/readpostsbycategory/'.$row['idcategory']; ?>" class="w3-bar-item w3-button"><?=$row['nmcategory']; ?></a>
+	      <?php endforeach; ?>
 	    </div>
   	</div>
 		<a href="#about" class="w3-bar-item w3-button">ABOUT</a>
