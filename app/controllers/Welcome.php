@@ -13,6 +13,7 @@ class Welcome extends TS_Controller {
     $this->tsdata['kelas'] = 'welcome';
     $this->tsdata['folder']= 'welcome/';
     $this->tsdata['template'] = 'template/';
+    $this->tsdata['category'] = $this->category();
   }
 
 	public function index()
@@ -31,9 +32,9 @@ class Welcome extends TS_Controller {
 			if($result['success']){
 				$this->tsdata['posts'] = $result['rows'];
 			}
-
-		$view = $this->tsdata['folder'].'welcome'; 
-		$this->load->view($view, $this->tsdata);
+			
+			$view = $this->tsdata['folder'].'welcome'; 
+			$this->load->view($view, $this->tsdata);
 			// echo $this->db->last_query();
 	}
 
@@ -63,6 +64,47 @@ class Welcome extends TS_Controller {
 		}
 		$view = $this->tsdata['folder'].'userin'; 
 		$this->load->view($view, $this->tsdata);
+	}
+
+	function readpostsbycategory($idcategory=0)
+	{
+		$param = array(
+      'table'=>'posts',
+      'field'=>'*',
+      'where'=>'categoryposts = '.$idcategory,
+      'order'=>'idposts DESC',
+      'limit'=>0,
+      'offset'=>0
+    );
+    $result = $this->tscrud->get($param);
+
+    $this->tsdata['posts'] = array();
+		if($result['success']){
+			$this->tsdata['posts'] = $result['rows'];
+		}
+		
+		$view = $this->tsdata['folder'].'welcome'; 
+		$this->load->view($view, $this->tsdata);
+	}
+
+	private function category()
+	{
+		$param = array(
+	      'table'=>'category',
+	      'field'=>'*',
+	      'where'=>'',
+	      'order'=>'',
+	      'limit'=>0,
+	      'offset'=>0
+	    );
+	    $result = $this->tscrud->get($param);
+
+	    $category = array();
+			if($result['success']){
+				$category = $result['rows'];
+			}
+
+			return $category;
 	}
 
 }
