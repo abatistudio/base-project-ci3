@@ -61,27 +61,42 @@ class Tscrud
 		return $aError;
 	}
 
+	// $param = array('table'=>'','field'=>'*', 'where'=>'', 'order'=>'', 'limit'=>0, 'offset'=>0)
 	function get($param = array())	
-	{		
-		$table = $param['table'];
-		$where = $param['where'];
-		$field = $param['field'];
-
-		$this->CI->db->select($field);
-		$this->CI->db->where($where);
-		$result = $this->CI->db->get($table);
-
+	{	
 		$aData  = array('success'=> false, 'message'=> 'Error...', 'rows'=>array());
-		if($result)
-		{
-			$aData['message'] = 'Data tidak ada';
-			if($result->num_rows()>0){
-				$aData['success'] = true;
-				$aData['message'] = 'Data ada';
-				$aData['rows'] = $result->result_array();
+		if($param)
+		{	
+			if(isset($param['table']))
+			{
+				$this->CI->db->select($param['field']);
+				if($param['where']!==''){
+					$this->CI->db->where($param['where']);					
+				}				
+				if($param['order']!==''){
+					$this->CI->db->order_by($param['order']);
+				}
+				$limit = $param['limit'];
+				if($param['limit']!==0){
+					$this->CI->db->limit($param['limit']);
+				}
+				if($param['offset']!==0){
+					$this->CI->db->limit($param['limit'], $param['offset']);
+				}
+				$result = $this->CI->db->get($param['table']);
+
+				if($result)
+				{
+					$aData['message'] = 'Data tidak ada';
+					if($result->num_rows()>0){
+						$aData['success'] = true;
+						$aData['message'] = 'Data ada';
+						$aData['rows'] = $result->result_array();
+					}
+				}
 			}
 		}
-		
+
 		return $aData;
 	}
 
