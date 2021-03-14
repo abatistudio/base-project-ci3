@@ -1,8 +1,7 @@
 <?php $this->load->view($template.'head'); ?>
 
-	<div class="w3-container w3-teal">
-  	<h1>Blog Admin</h1>
-	</div>
+<!-- top menu -->
+<?php $this->load->view($template.'menu'); ?>
 
 	<div class="w3-container">
 		<h3>This Back</h3>
@@ -12,15 +11,8 @@
 	  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	  <p><a class="w3-button w3-red" href="back/userout">Logout</a></p>
 	</div>
 
 <?php $this->load->view($template.'copyright') ?>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		let kelas = '<?=$kelas; ?>';
-
-	});
-</script>
 <?php $this->load->view($template.'foot'); ?>
